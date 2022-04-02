@@ -66,14 +66,15 @@ const Uploader = () => {
           <p>
             <input type="file" name="file" />
           </p>
-          
+		<div className="image_container">
           <img src={imageSrc} />
-          
+		<br/>
           {imageSrc && !uploadData && (
             <p>
               <button>Upload Files</button>
             </p>
           )}
+		</div>
 
           {uploadData && (
             <code><pre>{JSON.stringify(uploadData, null, 2)}</pre></code>

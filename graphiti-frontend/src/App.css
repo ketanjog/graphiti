@@ -1,4 +1,7 @@
-
+.image_container img{
+    
+    max-height: 25em;
+}
 .App {
   text-align: center;
 }
@@ -40,7 +43,7 @@
 .Small-Header {
   background-color: #a865ff;
   display: flex;
-  min-height: 2em;
+  min-height: 1em;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -82,6 +85,9 @@
 }
 .white_text{
    color: #ffffff;
+   font-size: calc(10px + 2vmin);
+   font-family: 'Roboto', sans-serif;
+   font-weight: bold;
 }
 .right_justify{
    text-align: right;
