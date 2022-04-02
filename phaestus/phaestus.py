@@ -2,6 +2,7 @@ import json
 from web3 import Web3
 import asyncio
 import addresses as ADD
+import wrappers as Wrap
 
 #### --- Enter your infura url here --- ####
 infura_url = "https://rinkeby.infura.io/v3/748ad11fcda7473dacdafd5fa572a5ba"
@@ -20,6 +21,16 @@ def handle_event(event):
     event = json.loads(Web3.toJSON(event))["args"]
     if event["_serviceType"] == "upscale":
         print("Attempting to claim image: " + str(event["_graphitiId"]))
+        
+        function = pfactory.functions.claimJob(ADD.nodeId, str(event["_graphitiId"]))
+        # function = pfactory.functions.getMyNodeId()
+
+        Wrap.wrap_transact(web3, function)
+
+        # When there is more than one node, we need a CHECK here to see if 
+        # the Wrap function was successful
+        url = function.call()
+        print(url)
 
     # Add upscaling functionality here.
 

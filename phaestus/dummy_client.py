@@ -19,7 +19,7 @@ gfactory = web3.eth.contract(address=ADD.gFactory_address, abi=ADD.gFactory_ABI)
 Pfactory = web3.eth.contract(address=ADD.pFactory_address, abi=ADD.pFactory_ABI)
 gGetter = web3.eth.contract(address=ADD.gGetter_address, abi=ADD.gGetter_ABI)
 
-function = gfactory.functions.createGraphiti("upscale", "dummyurl4")
+function = gfactory.functions.createGraphiti("upscale", "yourmomismytoy")
 
 Wrap.wrap_transact(web3, function)
 

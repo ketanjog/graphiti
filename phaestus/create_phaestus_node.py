@@ -21,13 +21,15 @@ gGetter = web3.eth.contract(address=ADD.gGetter_address, abi=ADD.gGetter_ABI)
 
 
 # initialise node data onto the smart contract
+nodeId = Pfactory.functions.createNode(ADD.myAddress, "upscale").call()
+
 function = Pfactory.functions.createNode(ADD.myAddress, "upscale")
 
 Wrap.wrap_transact(web3, function)
 
-# f = open("addresses.py", "a")
-# f.write("nodeId = " + str(nodeId))
-# f.close()
+f = open("addresses.py", "a")
+f.write("nodeId = " + str(nodeId))
+f.close()
 
 print("Your node has successfully registered on the graphiti smart contract!")
 
