@@ -10,7 +10,7 @@ contract GraphitiFactory {
     }
     /// @dev Basic struct that holds a record of request being places
     /// @param serviceType currently only "upscale"
-    /// @param status either Unclaimed, Claimed, Complete, Aborted or Failed.
+    /// @param status either unclaimed, processing, complete, aborted or failed.
     struct Graphiti {
         string serviceType;
         string status;
@@ -37,8 +37,6 @@ contract GraphitiFactory {
         
         /// Emits event saying job of _serviceType is available
         emit graphitiAvailable(_serviceType, _graphitiId);
-
-        //bool response = _accessPhaestus(graphitis[id]);
         
     }
 }
