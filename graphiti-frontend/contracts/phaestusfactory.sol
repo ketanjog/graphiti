@@ -1,4 +1,4 @@
-pragma solidity >=0.6.0 <0.8.0;
+pragma solidity >=0.6.0 <0.8.15;
 
 import "./graphitifactory.sol";
 
@@ -36,11 +36,13 @@ contract PhaestusFactory is GraphitiFactory{
         phaestusNodes[_nodeId].status = "active";
     }
     /// Once the node hears a jobAvailable event, and if they have the required servicetype, claim the job
-    function claimJob(uint _nodeId, uint _graphitiId) public onlyOwnerOf(_nodeId) {
+    function claimJob(uint _nodeId, uint _graphitiId) public onlyOwnerOf(_nodeId) returns (string memory ) {
         require(keccak256(abi.encodePacked(graphitis[_graphitiId].status)) == keccak256(abi.encodePacked("unclaimed")));
         graphitiToPhaestus[_graphitiId] = _nodeId;
         phaestusNodes[_nodeId].status = "engaged";
         graphitis[_graphitiId].status = "claimed";
+
+        return graphitis[_graphitiId].url;
     }
 
 }

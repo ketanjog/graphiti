@@ -1,4 +1,4 @@
-pragma solidity >=0.6.0 <0.8.0;
+pragma solidity >=0.6.0 <0.8.15;
 
 /// @dev A template contract to handle AI Image service requests 
 contract GraphitiFactory {
@@ -14,6 +14,7 @@ contract GraphitiFactory {
     struct Graphiti {
         string serviceType;
         string status;
+        string url;
     }
 
     ///@dev Job notification sent to all listening phaestus nodes.
@@ -28,10 +29,10 @@ contract GraphitiFactory {
     
     /// @dev logs request, sends to phaestus nodes and returns completion response
     /// @param _serviceType currently set to "upscale"
-    function _createGraphiti(string memory _serviceType) internal {
+    function createGraphiti(string memory _serviceType, string memory _url) public {
 
         /// Log request on chain.
-       graphitis.push(Graphiti(_serviceType, "unclaimed"));
+       graphitis.push(Graphiti(_serviceType, "unclaimed", _url));
        uint _graphitiId = graphitis.length -1;
        graphitiToOwner[_graphitiId] = msg.sender;
         
