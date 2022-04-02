@@ -1,4 +1,7 @@
-
+.image_container img{
+    
+    max-height: 25em;
+}
 .App {
   text-align: center;
 }
@@ -82,6 +85,8 @@
 }
 .white_text{
    color: #ffffff;
+   font-size: calc(10px + 2vmin);
+   font-family: Monaco;
 }
 .right_justify{
    text-align: right;
