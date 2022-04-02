@@ -11,14 +11,17 @@ web3 = Web3(Web3.HTTPProvider(infura_url))
 
 
 gfactory = web3.eth.contract(address=ADD.gFactory_address, abi=ADD.gFactory_ABI)
-Pfactory = web3.eth.contract(address=ADD.pFactory_address, abi=ADD.pFactory_ABI)
+pfactory = web3.eth.contract(address=ADD.pFactory_address, abi=ADD.pFactory_ABI)
 gGetter = web3.eth.contract(address=ADD.gGetter_address, abi=ADD.gGetter_ABI)
 
 
 # define function to handle jobAvailable event
 def handle_event(event):
-    print(Web3.toJSON(event))
-    gGetter.functions.fetchGraphiti(event[1])
+    event = json.loads(Web3.toJSON(event))["args"]
+    if event["_serviceType"] == "upscale":
+        print("Attempting to claim image: " + str(event["_graphitiId"]))
+
+    # Add upscaling functionality here.
 
 
 async def log_loop(event_filter, poll_interval):
