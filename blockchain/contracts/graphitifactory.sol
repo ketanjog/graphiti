@@ -45,5 +45,10 @@ contract GraphitiFactory {
         return graphitis;
     }
 
+    function getUrl() public view returns (string memory){
+        uint currentImage = graphitis.length - 1;
+        return graphitis[currentImage].url;
+    }
+
 
 }

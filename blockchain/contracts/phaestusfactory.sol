@@ -36,13 +36,27 @@ contract PhaestusFactory is GraphitiFactory{
         phaestusNodes[_nodeId].status = "active";
     }
     /// Once the node hears a jobAvailable event, and if they have the required servicetype, claim the job
-    function claimJob(uint _nodeId, uint _graphitiId) public onlyOwnerOf(_nodeId) returns (string memory ) {
+    function claimJob(uint _nodeId, uint _graphitiId) public returns (string memory ) {
         require(keccak256(abi.encodePacked(graphitis[_graphitiId].status)) == keccak256(abi.encodePacked("unclaimed")));
         graphitiToPhaestus[_graphitiId] = _nodeId;
         phaestusNodes[_nodeId].status = "engaged";
-        graphitis[_graphitiId].status = "claimed";
+        graphitis[_graphitiId].status = "processing";
+        log(graphitis[_graphitiId].url)
+        return string(graphitis[_graphitiId].url);
+    }
 
-        return graphitis[_graphitiId].url;
+    function getUrl(uint _graphitiId) public view returns (string memory) {
+        return string(graphitis[_graphitiId].url);
+    }
+
+    function getMyNodeId(address _owner) external view returns (uint) {
+        for (uint i = 0; i < phaestusNodes.length ; i++){
+            if (phaestusNodes[i].nodeOwnerAddress == _owner){
+                return i;
+            }
+        }
+
+        return 9999;
     }
 
 }
