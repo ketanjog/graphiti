@@ -23,4 +23,6 @@ function = gfactory.functions.createGraphiti("upscale", "yourmomismytoy")
 
 Wrap.wrap_transact(web3, function)
 
+# print(gfactory.functions.viewGraphitis().call())
+
 

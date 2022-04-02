@@ -22,15 +22,14 @@ def handle_event(event):
     if event["_serviceType"] == "upscale":
         print("Attempting to claim image: " + str(event["_graphitiId"]))
         
-        function = pfactory.functions.claimJob(ADD.nodeId, str(event["_graphitiId"]))
-        # function = pfactory.functions.getMyNodeId()
-
-        Wrap.wrap_transact(web3, function)
-
+        # function = pfactory.functions.claimJob(ADD.nodeId, event["_graphitiId"])
+        #  Wrap.wrap_transact(web3, function)
+        # url = function.call()
+        function = gfactory.functions.getUrl().call()
+        print(function)
         # When there is more than one node, we need a CHECK here to see if 
         # the Wrap function was successful
-        url = function.call()
-        print(url)
+       
 
     # Add upscaling functionality here.
 
