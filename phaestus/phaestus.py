@@ -16,6 +16,11 @@ pfactory = web3.eth.contract(address=ADD.pFactory_address, abi=ADD.pFactory_ABI)
 gGetter = web3.eth.contract(address=ADD.gGetter_address, abi=ADD.gGetter_ABI)
 
 
+
+# The Upscaling Code Goes Here:
+def upscale():
+    return "Fuck you, and fuck your horse"
+
 # define function to handle jobAvailable event
 def handle_event(event):
     event = json.loads(Web3.toJSON(event))["args"]
@@ -25,10 +30,19 @@ def handle_event(event):
         # function = pfactory.functions.claimJob(ADD.nodeId, event["_graphitiId"])
         #  Wrap.wrap_transact(web3, function)
         # url = function.call()
-        function = gfactory.functions.getUrl().call()
-        print(function)
+        url = gfactory.functions.getUrl().call()
+        print(url)
         # When there is more than one node, we need a CHECK here to see if 
         # the Wrap function was successful
+
+        new_url = upscale()
+
+        function = gfactory.functions.returnUpscale(event["_graphitiId"], new_url)
+        Wrap.wrap_transact(web3, function)
+        # url = function.call()
+        print("Image Upscale Successful!")
+
+
        
 
     # Add upscaling functionality here.
