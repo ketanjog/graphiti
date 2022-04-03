@@ -1,5 +1,19 @@
 # graphiti network 🎨
 
+## Code:
+Phaaestus Node:
+./phaestus.py and /phaestus/runUpscale.sh (GAN is set up elsewhere)
+
+Client:
+phaestus/dummy_client.py -> demo purposes
+/graphiti-frontend
+
+Contracts:
+blockchain/contracts/
+
+Deprecated Contracts (Currently unused):
+graphiti-client/contracts/
+
 ## Inspiration
 We were lounging around on a cold evening, talking about how Blockchain and AI were two technological waves that were sweeping through the Tech Industry and we didn't know which one to hop onto. Being greedy and very much in choice paralysis, we decided to find a way to combine them. In our efforts to reconcile two very different technologies, Graphiti was born. 
 
