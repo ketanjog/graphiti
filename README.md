@@ -5,8 +5,8 @@ Born as a LionHack Project, will become more... a smart contract + frontend that
 
 Roadmap:
 
->Robust Verification as Described in WP
->Deployment on Solana
->Queueing implemented on SCs
->General Upscaling support
->General GAN support
+1. Robust Verification as Described in WP
+2. Deployment on Solana
+3. Queueing implemented on SCs
+4. General Upscaling support
+5. General GAN support
