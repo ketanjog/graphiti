@@ -2,10 +2,30 @@ import { useState } from 'react';
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import WalletBalance from './WalletBalance';
+import axios from 'axios'
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+
 const Uploader = () => {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
+  let requestCompleted = false;
+  const getUpscaled = async (image, key) =>{
+		const url='https://graphiti-client.herokuapp.com/upscale/';
+		const send = url+key+'?url='+image;
+		//http request for send
+console.log('deez nuts');
+		  fetch('send')
+.then(response =>{
+    sleep(150000);
+}).then(data =>{
+    console.log(data);
+    requestCompleted = true;
+    return data;
+})
+  }
 
+  
   /**
    * handleOnChange
    * @description Triggers when the file input changes (ex: when a file is selected)
@@ -43,7 +63,20 @@ const Uploader = () => {
       body: formData
     }).then(res => res.json());
     console.log('res', res.secure_url);
-    document.location.href = 'recieve?'+res.secure_url;
+    //document.location.href = 'recieve?'+res.secure_url;
+    //downloadFile(res.secure_url, 'download');
+	//
+		  //request upscale and then redirect 
+    await sleep(15000);
+    await getUpscaled(res.secure_url,'8515ae646f520611c26cd8d3e77064ea8e4928f968110c67f40a6f8bc4cd7b14')
+			     .then(data =>{
+	console.log(data);
+	requestCompleted = true;
+	window.location.replace('https://res.cloudinary.com/dzuirpp86/image/upload/v1648995310/g2oanrsghq1nn3ubfitq.jpg');
+    })
+		  requestCompleted = true;
+		  //window.location.replace(tempUpscale);
+		 // console.log('tempUpscale', tempUpscale);
   }
 
   return (
@@ -58,7 +91,7 @@ const Uploader = () => {
         <h1 className={styles.title}>
           Image Upscaler
         </h1>
-
+		  {requestCompleted && (<h1>{}</h1>)}
         <p className={styles.description}>
           Send your image to a phaestus node and get an upscaled version.
         </p>

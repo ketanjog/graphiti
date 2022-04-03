@@ -107,5 +107,10 @@ pre[class*="language-"] {
 	tab-size: 4;
 	hyphens: none;
 }
-
+.form-control {
+    align-items: center;
+	justify-content: center;
+	display: flex;
+	padding: 1.5em;
+}
 

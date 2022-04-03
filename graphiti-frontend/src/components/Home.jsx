@@ -5,6 +5,8 @@ import Header from './Header';
 
 import Uploader from './Uploader';
 import HeaderNav from './HeaderNav';
+import WalletBalance from './WalletBalance';
+
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -19,6 +21,8 @@ function Home() {
     <div>
 	<Header />		  
 	<Uploader />
+		  <center>
+<WalletBalance /> </center> 
 	</div>
   );
 };
