@@ -16,23 +16,23 @@ pfactory = web3.eth.contract(address=ADD.pFactory_address, abi=ADD.pFactory_ABI)
 gGetter = web3.eth.contract(address=ADD.gGetter_address, abi=ADD.gGetter_ABI)
 
 
-
 # The Upscaling Code Goes Here:
 def upscale():
     return "Fuck you, and fuck your horse"
+
 
 # define function to handle jobAvailable event
 def handle_event(event):
     event = json.loads(Web3.toJSON(event))["args"]
     if event["_serviceType"] == "upscale":
         print("Attempting to claim image: " + str(event["_graphitiId"]))
-        
+
         # function = pfactory.functions.claimJob(ADD.nodeId, event["_graphitiId"])
         #  Wrap.wrap_transact(web3, function)
         # url = function.call()
         url = gfactory.functions.getUrl().call()
         print(url)
-        # When there is more than one node, we need a CHECK here to see if 
+        # When there is more than one node, we need a CHECK here to see if
         # the Wrap function was successful
 
         new_url = upscale()
@@ -41,9 +41,6 @@ def handle_event(event):
         Wrap.wrap_transact(web3, function)
         # url = function.call()
         print("Image Upscale Successful!")
-
-
-       
 
     # Add upscaling functionality here.
 
@@ -54,18 +51,16 @@ async def log_loop(event_filter, poll_interval):
             handle_event(graphitiAvailable)
         await asyncio.sleep(poll_interval)
 
+
 def main():
-    event_filter = gfactory.events.graphitiAvailable.createFilter(fromBlock='latest')
+    event_filter = gfactory.events.graphitiAvailable.createFilter(fromBlock="latest")
 
     loop = asyncio.get_event_loop()
     try:
-        loop.run_until_complete(
-            asyncio.gather(
-                log_loop(event_filter, 2)))
+        loop.run_until_complete(asyncio.gather(log_loop(event_filter, 2)))
     finally:
         loop.close()
 
 
 if __name__ == "__main__":
     main()
-

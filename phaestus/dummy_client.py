@@ -29,17 +29,13 @@ function = gfactory.functions.createGraphiti("upscale", url)
 
 Wrap.wrap_transact(web3, function)
 
-#print(gfactory.functions.viewGraphitis().call())
+# print(gfactory.functions.viewGraphitis().call())
 
 unfetched = True
 while unfetched:
     newUrl = gfactory.functions.getUrl().call()
-    if (newUrl == url):
+    if newUrl == url:
         sleep(5)
     else:
         unfetched = False
         print("New url at: " + str(newUrl))
-
-
-
-

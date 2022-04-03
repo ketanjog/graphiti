@@ -32,4 +32,3 @@ f.write("nodeId = " + str(nodeId))
 f.close()
 
 print("Your node has successfully registered on the graphiti smart contract!")
-
