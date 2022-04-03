@@ -3,6 +3,22 @@ from web3 import Web3
 import asyncio
 import addresses as ADD
 import wrappers as Wrap
+import subproceses
+import requests
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+# Path to upscale shell script:
+UPSCALE_PATH = "./runUpscale.sh"
+
+# Cloudinary Credentials (SECURE LATER)
+cloudinary.config( 
+  cloud_name = "dzuirpp86", 
+  api_key = "293976138531536", 
+  api_secret = "XpZP2UZIfYN4Srz73Q7OdylNAEQ" 
+)
 
 #### --- Enter your infura url here --- ####
 infura_url = "https://rinkeby.infura.io/v3/748ad11fcda7473dacdafd5fa572a5ba"
@@ -15,11 +31,19 @@ gfactory = web3.eth.contract(address=ADD.gFactory_address, abi=ADD.gFactory_ABI)
 pfactory = web3.eth.contract(address=ADD.pFactory_address, abi=ADD.pFactory_ABI)
 gGetter = web3.eth.contract(address=ADD.gGetter_address, abi=ADD.gGetter_ABI)
 
+### --- Add service availability checks here later
+### --- Currently only works with jpegs
+ 
+
 
 
 # The Upscaling Code Goes Here:
-def upscale():
-    return "Fuck you, and fuck your horse"
+def upscale(url):
+    subprocess.call(['sh', UPSCALE_PATH , url])
+
+    upload_receipt = cloudinary.uploader.upload("inputFile.jpg")
+
+    return upload_receipt['url']
 
 # define function to handle jobAvailable event
 def handle_event(event):
@@ -35,17 +59,12 @@ def handle_event(event):
         # When there is more than one node, we need a CHECK here to see if 
         # the Wrap function was successful
 
-        new_url = upscale()
+        new_url = upscale(url)
 
         function = gfactory.functions.returnUpscale(event["_graphitiId"], new_url)
         Wrap.wrap_transact(web3, function)
         # url = function.call()
         print("Image Upscale Successful!")
-
-
-       
-
-    # Add upscaling functionality here.
 
 
 async def log_loop(event_filter, poll_interval):
