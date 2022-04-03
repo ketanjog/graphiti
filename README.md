@@ -19,7 +19,7 @@ graphiti-client/contracts/
 
 
 ## Inspiration
-We were lounging around on a cold evening, talking about how Blockchain and AI were two technological waves that were sweeping through the Tech Industry and we didn't know which one to hop onto. Being greedy and very much in choice paralysis, we decided to find a way to combine them. In our efforts to reconcile two very different technologies, Graphiti was born. 
+We were lounging around in our dorm a few days before the hackathon, talking about how Blockchain and AI were two technological waves that were sweeping through the Tech Industry and we didn't know which one to hop onto. Being greedy and very much in choice paralysis, we decided to find a way to combine them. Both of us being passionate about AI Art, Graphiti was born.  
 
 Let’s consider the case of upscaling (creating better resolution) images from blurry or low quality ones. One can whip up their own code to do so, and engage with GPU-compute clusters provided by large data service companies (E.g: Google). You will need to jump through dev-ops hoops and also pay quite a lot for these services. Alternatively, there are “ready-to-use” image upscaling solutions (which involve running deep generative models) that are provided by centralized service providers at a steep markup.
 
