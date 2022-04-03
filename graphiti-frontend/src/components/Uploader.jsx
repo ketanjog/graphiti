@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
-
+import WalletBalance from './WalletBalance';
 const Uploader = () => {
   const [imageSrc, setImageSrc] = useState();
   const [uploadData, setUploadData] = useState();
@@ -43,6 +43,7 @@ const Uploader = () => {
       body: formData
     }).then(res => res.json());
     console.log('res', res.secure_url);
+    document.location.href = 'recieve?'+res.secure_url;
   }
 
   return (
@@ -74,6 +75,7 @@ const Uploader = () => {
               <button>Upload Files</button>
             </p>
           )}
+		  
 		</div>
 
           {uploadData && (
