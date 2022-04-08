@@ -22,7 +22,7 @@ function Home() {
 	<Header />		  
 	<Uploader />
 		  <center>
-<WalletBalance /> </center> 
+    <WalletBalance /> </center> 
 	</div>
   );
 };

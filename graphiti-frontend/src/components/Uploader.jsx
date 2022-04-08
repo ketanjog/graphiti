@@ -67,13 +67,15 @@ console.log('deez nuts');
     //downloadFile(res.secure_url, 'download');
 	//
 		  //request upscale and then redirect 
-    await sleep(15000);
-    await getUpscaled(res.secure_url,'8515ae646f520611c26cd8d3e77064ea8e4928f968110c67f40a6f8bc4cd7b14')
+
+    let image = getUpscaled(res.secure_url,'8515ae646f520611c26cd8d3e77064ea8e4928f968110c67f40a6f8bc4cd7b14')
 			     .then(data =>{
 	console.log(data);
 	requestCompleted = true;
-	window.location.replace('https://res.cloudinary.com/dzuirpp86/image/upload/v1648995310/g2oanrsghq1nn3ubfitq.jpg');
+	
     })
+    await sleep(15000);
+window.location.replace('https://res.cloudinary.com/dzuirpp86/image/upload/v1648995310/g2oanrsghq1nn3ubfitq.jpg');
 		  requestCompleted = true;
 		  //window.location.replace(tempUpscale);
 		 // console.log('tempUpscale', tempUpscale);

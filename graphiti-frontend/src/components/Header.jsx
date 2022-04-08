@@ -18,7 +18,7 @@ const Header = () => (
         <div class="row mt-6">
 		{/*<div class="col-md-8 mx-auto text-center">*/}
                 <h1>Decentralized Compute for AI art</h1>
-                <p class="lead mb-5"> because f*ck google.</p>
+                <p class="lead mb-5"> off chain gpu + on chain verification and payment</p>
 
 				<a href="https://github.com/LeaVerou/prism/" class="btn btn-success svg-icon">
                     <em class="mr-2" data-feather="github"></em>
